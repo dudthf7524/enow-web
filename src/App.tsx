@@ -1,29 +1,27 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { BottomNav } from '@/components/layout/BottomNav'
-import HomePage from '@/pages/HomePage'
-import PlaceDetailPage from '@/pages/PlaceDetailPage'
-import ProfilePage from '@/pages/ProfilePage'
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: { retry: 1, refetchOnWindowFocus: false },
-  },
-})
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Header } from './components/layout/Header';
+import TodayPage from './pages/TodayPage';
+import LoginPage from './pages/LoginPage';
 
 export default function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <div className="relative h-[100dvh] max-w-md mx-auto bg-white overflow-hidden flex flex-col">
-          <Routes>
-            <Route path="/"                         element={<HomePage />} />
-            <Route path="/place/:kakaoPlaceId"      element={<PlaceDetailPage />} />
-            <Route path="/profile"                  element={<ProfilePage />} />
-          </Routes>
-          <BottomNav />
-        </div>
-      </BrowserRouter>
-    </QueryClientProvider>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="*"
+          element={
+            <div className="min-h-screen bg-white flex flex-col">
+              <Header />
+              <main className="flex-1">
+                <Routes>
+                  <Route path="/" element={<TodayPage />} />
+                </Routes>
+              </main>
+            </div>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }

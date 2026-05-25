@@ -9,22 +9,23 @@
   }
 
   html {
-    font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Noto Sans KR', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial,
+      "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   }
 
   body {
     @apply bg-white text-black;
+    font-weight: 400;
     overscroll-behavior: none;
   }
 }
 
-@layer components {
-  .section-label {
-    @apply text-[11px] font-semibold tracking-widest text-black/40 uppercase mb-2;
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
-}
-
-/* iOS safe area */
-.pb-safe {
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
