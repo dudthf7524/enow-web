@@ -5,10 +5,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          '-apple-system', 'BlinkMacSystemFont', '"Pretendard"',
-          '"Noto Sans KR"', 'sans-serif',
-        ],
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        sans: ['-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       keyframes: {
         'slide-up': {
